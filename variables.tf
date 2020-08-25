@@ -43,6 +43,17 @@ variable "optional_opsman_image_url" {
   default     = ""
 }
 
+variable "opsman_image_id" {
+  type        = "string"
+  description = "public ops manager image identifier. Of the form: project_id/image_id"
+}
+
+variable "optional_opsman_image_id" {
+  type        = "string"
+  description = "public ops manager image identifier (to be used for optional extra instance). Of the form: project_id/image_id"
+  default     = ""
+}
+
 variable "opsman_machine_type" {
   type    = "string"
   default = "n1-standard-2"
