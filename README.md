@@ -90,7 +90,8 @@ SERVICE_ACCOUNT_KEY
 - env_name: **(required)** An arbitrary unique name for namespacing resources. Max 23 characters.
 - region: **(required)** Region in which to create resources (e.g. us-central1)
 - zones: **(required)** Zones in which to create resources. Must be within the given region. Currently you must specify exactly 3 Zones for this terraform configuration to work. (e.g. [us-central1-a, us-central1-b, us-central1-c])
-- opsman_image_url **(required)** Source URL of the Ops Manager image you want to boot.
+- opsman_image_url: Source URL of the Ops Manager image you want to boot.
+- opsman_image_id: Identifer of the Ops Manager image you want to boot. Of the form <project_id>/<image_id>
 - service_account_key: **(required)** Contents of your service account key file generated using the `gcloud iam service-accounts keys create` command.
 - dns_suffix: **(required)** Domain to add environment subdomain to (e.g. foo.example.com)
 - ssl_cert: **(required)** SSL certificate for HTTP load balancer configuration. Can be either trusted or self-signed.
