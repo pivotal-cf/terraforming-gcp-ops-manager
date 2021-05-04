@@ -1,7 +1,7 @@
 // Allow access to TCP router
 resource "google_compute_firewall" "cf-tcp" {
   name    = "${var.env_name}-cf-tcp"
-  network = "${google_compute_network.pcf-network.name}"
+  network = google_compute_network.pcf-network.name
 
   allow {
     protocol = "tcp"
@@ -32,15 +32,16 @@ resource "google_compute_target_pool" "cf-tcp" {
   name = "${var.env_name}-cf-tcp"
 
   health_checks = [
-    "${google_compute_http_health_check.cf-tcp.name}",
+    google_compute_http_health_check.cf-tcp.name,
   ]
 }
 
 // TCP forwarding rule
 resource "google_compute_forwarding_rule" "cf-tcp" {
   name        = "${var.env_name}-cf-tcp"
-  target      = "${google_compute_target_pool.cf-tcp.self_link}"
+  target      = google_compute_target_pool.cf-tcp.self_link
   port_range  = "1024-1123"
   ip_protocol = "TCP"
-  ip_address  = "${google_compute_address.cf-tcp.address}"
+  ip_address  = google_compute_address.cf-tcp.address
 }
+

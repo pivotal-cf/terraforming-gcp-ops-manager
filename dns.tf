@@ -9,20 +9,20 @@ resource "google_dns_record_set" "ops-manager-dns" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.env_dns_zone.name}"
+  managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = ["${google_compute_instance.ops-manager.network_interface.0.access_config.0.assigned_nat_ip}"]
+  rrdatas = [google_compute_instance.ops-manager.network_interface[0].access_config[0].assigned_nat_ip]
 }
 
 resource "google_dns_record_set" "optional-ops-manager-dns" {
   name  = "pcf-optional.${google_dns_managed_zone.env_dns_zone.dns_name}"
   type  = "A"
   ttl   = 300
-  count = "${min(length(split("", var.optional_opsman_image_url)),1)}"
+  count = min(length(split("", var.optional_opsman_image_url)), 1)
 
-  managed_zone = "${google_dns_managed_zone.env_dns_zone.name}"
+  managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = ["${google_compute_instance.optional-ops-manager.network_interface.0.access_config.0.assigned_nat_ip}"]
+  rrdatas = [google_compute_instance.optional-ops-manager[0].network_interface[0].access_config[0].assigned_nat_ip]
 }
 
 resource "google_dns_record_set" "wildcard-sys-dns" {
@@ -30,9 +30,9 @@ resource "google_dns_record_set" "wildcard-sys-dns" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.env_dns_zone.name}"
+  managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = ["${google_compute_global_address.cf.address}"]
+  rrdatas = [google_compute_global_address.cf.address]
 }
 
 resource "google_dns_record_set" "doppler-sys-dns" {
@@ -40,9 +40,9 @@ resource "google_dns_record_set" "doppler-sys-dns" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.env_dns_zone.name}"
+  managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = ["${google_compute_address.cf-ws.address}"]
+  rrdatas = [google_compute_address.cf-ws.address]
 }
 
 resource "google_dns_record_set" "loggregator-sys-dns" {
@@ -50,9 +50,9 @@ resource "google_dns_record_set" "loggregator-sys-dns" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.env_dns_zone.name}"
+  managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = ["${google_compute_address.cf-ws.address}"]
+  rrdatas = [google_compute_address.cf-ws.address]
 }
 
 resource "google_dns_record_set" "wildcard-apps-dns" {
@@ -60,9 +60,9 @@ resource "google_dns_record_set" "wildcard-apps-dns" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.env_dns_zone.name}"
+  managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = ["${google_compute_global_address.cf.address}"]
+  rrdatas = [google_compute_global_address.cf.address]
 }
 
 resource "google_dns_record_set" "wildcard-ws-dns" {
@@ -70,9 +70,9 @@ resource "google_dns_record_set" "wildcard-ws-dns" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.env_dns_zone.name}"
+  managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = ["${google_compute_address.cf-ws.address}"]
+  rrdatas = [google_compute_address.cf-ws.address]
 }
 
 resource "google_dns_record_set" "app-ssh-dns" {
@@ -80,9 +80,9 @@ resource "google_dns_record_set" "app-ssh-dns" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.env_dns_zone.name}"
+  managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = ["${google_compute_address.cf-ssh.address}"]
+  rrdatas = [google_compute_address.cf-ssh.address]
 }
 
 resource "google_dns_record_set" "tcp-dns" {
@@ -90,7 +90,8 @@ resource "google_dns_record_set" "tcp-dns" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.env_dns_zone.name}"
+  managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = ["${google_compute_address.cf-tcp.address}"]
+  rrdatas = [google_compute_address.cf-tcp.address]
 }
+

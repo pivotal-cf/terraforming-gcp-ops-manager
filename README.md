@@ -108,9 +108,6 @@ SERVICE_ACCOUNT_KEY
 - ssh.sys.*$env_name*.*$dns_suffix*: Points at the TCP load balancer in front of the Diego brain.
 - tcp.*$env_name*.*$dns_suffix*: Points at the TCP load balancer in front of the TCP router.
 
-## Cloud SQL Configuration (optional)
-- external_database: *(optional)* When set to "true", a cloud SQL instance will be deployed for the Ops Manager and PAS.
-
 #### Ops Manager
 - opsman_sql_db_host: *(optional)* The host the user can connect from. Can be an IP address. Changing this forces a new resource to be created.
 
