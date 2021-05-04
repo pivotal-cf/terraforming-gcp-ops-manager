@@ -108,11 +108,6 @@ SERVICE_ACCOUNT_KEY
 - ssh.sys.*$env_name*.*$dns_suffix*: Points at the TCP load balancer in front of the Diego brain.
 - tcp.*$env_name*.*$dns_suffix*: Points at the TCP load balancer in front of the TCP router.
 
-## Isolation Segments (optional)
-- isolation_segment *(optional)* When set to "true" creates HTTP load-balancer across 3 zones for isolation segments.
-- iso_seg_ssl_cert: *(optional)* SSL certificate for HTTP load balancer configuration. Can be either trusted or self-signed.
-- iso_seg_ssl_private_key:  *(optional)* Private key for above SSL certificate.
-
 ## Cloud SQL Configuration (optional)
 - external_database: *(optional)* When set to "true", a cloud SQL instance will be deployed for the Ops Manager and PAS.
 

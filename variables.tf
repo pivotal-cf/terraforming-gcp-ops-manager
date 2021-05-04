@@ -102,27 +102,6 @@ variable "opsman_sql_db_host" {
   default = ""
 }
 
-/*****************************
- * Isolation Segment Options *
- *****************************/
-
-variable "isolation_segment" {
-  description = "create the required infrastructure to deploy isolation segment"
-  default     = false
-}
-
-variable "iso_seg_ssl_cert" {
-  type        = "string"
-  description = "ssl certificate content"
-  default     = ""
-}
-
-variable "iso_seg_ssl_private_key" {
-  type        = "string"
-  description = "ssl certificate private key content"
-  default     = ""
-}
-
 /********************************
  * Google Cloud Storage Options *
  ********************************/
