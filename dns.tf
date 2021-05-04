@@ -11,7 +11,7 @@ resource "google_dns_record_set" "ops-manager-dns" {
 
   managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = [google_compute_instance.ops-manager.network_interface[0].access_config[0].assigned_nat_ip]
+  rrdatas = [google_compute_instance.ops-manager.network_interface[0].access_config[0].nat_ip]
 }
 
 resource "google_dns_record_set" "optional-ops-manager-dns" {
@@ -22,7 +22,7 @@ resource "google_dns_record_set" "optional-ops-manager-dns" {
 
   managed_zone = google_dns_managed_zone.env_dns_zone.name
 
-  rrdatas = [google_compute_instance.optional-ops-manager[0].network_interface[0].access_config[0].assigned_nat_ip]
+  rrdatas = [google_compute_instance.optional-ops-manager[0].network_interface[0].access_config[0].nat_ip]
 }
 
 resource "google_dns_record_set" "wildcard-sys-dns" {
