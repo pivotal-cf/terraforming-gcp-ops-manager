@@ -130,7 +130,7 @@ resource "google_storage_bucket" "director" {
 }
 
 resource "tls_private_key" "ops-manager" {
-  algorithm = "ECDSA"
-  ecdsa_curve  = "P256"
+  algorithm = "RSA"
+  rsa_bits  = "4096"
 }
 
