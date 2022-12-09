@@ -56,7 +56,7 @@ variable "optional_opsman_image_id" {
 
 variable "opsman_machine_type" {
   type    = string
-  default = "n1-standard-2"
+  default = "e2-standard-2"
 }
 
 variable "service_account_key" {
