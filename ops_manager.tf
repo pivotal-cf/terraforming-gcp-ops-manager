@@ -58,6 +58,7 @@ resource "google_compute_instance" "ops-manager" {
     initialize_params {
       image = google_compute_image.ops-manager-image[0].self_link
       size  = 150
+      type = "pd-balanced"
     }
   }
 
@@ -100,6 +101,7 @@ resource "google_compute_instance" "optional-ops-manager" {
     initialize_params {
       image = google_compute_image.optional-ops-manager-image[0].self_link
       size  = 150
+      type = "pd-balanced"
     }
   }
 
