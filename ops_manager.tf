@@ -3,6 +3,7 @@ resource "google_compute_firewall" "ops-manager-external" {
   name        = "${var.env_name}-ops-manager-external"
   network     = google_compute_network.pcf-network.name
   target_tags = ["${var.env_name}-ops-manager-external"]
+  source_ranges = ["0.0.0.0/0"]
 
   allow {
     protocol = "icmp"

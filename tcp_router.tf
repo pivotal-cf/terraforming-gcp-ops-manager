@@ -9,6 +9,7 @@ resource "google_compute_firewall" "cf-tcp" {
   }
 
   target_tags = ["${var.env_name}-cf-tcp"]
+  source_ranges = ["0.0.0.0/0"]
 }
 
 // Static IP address for forwarding rule
