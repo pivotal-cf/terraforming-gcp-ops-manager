@@ -129,6 +129,7 @@ resource "google_storage_bucket" "director" {
   force_destroy = true
 
   count = var.opsman_storage_bucket_count
+  location = var.region
 }
 
 resource "tls_private_key" "ops-manager" {
